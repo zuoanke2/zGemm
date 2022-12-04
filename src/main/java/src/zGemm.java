@@ -160,17 +160,6 @@ public class zGemm {
         return ans;
     }
 
-    public class SplitedMat {
-        int[] pos;
-        List<List<Long>> mat;
-        SplitedMat(int row, int col, List<List<Long>> mat) {
-            pos = new int[2];
-            this.pos[0] = row;
-            this.pos[1] = col;
-            this.mat = mat;
-        }
-    }
-
     public List<SplitedMat> splitMatrix(List<List<Long>> matrix) {
         List<SplitedMat> ans = new ArrayList<>();
         int colStepLen = matrix.size() / 4;
@@ -273,7 +262,11 @@ public class zGemm {
             //get matrix
             List<List<Long>> mat1data = zg.readMat(filePath1);
             List<List<Long>> mat2data = zg.readMat(filePath2);
-            int[] temp = new int[]{0, 0};
+            //split matrix A and B
+            List<SplitedMat> matListA = zg.splitMatrix(mat1data);
+            List<SplitedMat> matListB = zg.splitMatrix(mat2data);
+
+            Matrix mx1 = new Matrix(matListA.get(0), matListB.get(0));
         } else if (select == 3) {
             String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix1.csv";
             String filePath2 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix2.csv";
@@ -284,46 +277,6 @@ public class zGemm {
             List<SplitedMat> splitedMats = zg.splitMatrix(mat1);
             List<List<Long>> oriMat = zg.combineMatrix(splitedMats);
             System.out.println("finish");
-        }
-    }
-
-    static class Matrix implements Runnable {
-        List<List<Long>> mat1;
-        List<List<Long>> mat2;
-        List<List<Long>> mat3;
-
-        List<Integer> pos;
-        Matrix(List<List<Long>> mat1, List<List<Long>> mat2, List<Integer> pos) {
-            this.mat1 = mat1;
-            this.mat2 = mat2;
-            this.pos = pos;
-        }
-
-        public List<List<Long>> matMuli(List<List<Long>> mat1, List<List<Long>> mat2) {
-            System.out.println("Matrix multiple start!");
-            List<List<Long>> res = new ArrayList<>();
-            int count = 0;
-            for (List<Long> mat1row : mat1) {
-                List<Long> newRow = new ArrayList<>();
-                for (int k = 0; k < mat2.get(0).size(); k++) {
-                    long sum = 0;
-                    for (int i = 0, j = 0; i < mat1row.size() && j < mat2.size(); i++, j++) {
-                        sum += mat1row.get(i) * (mat2.get(j).get(k));
-                    }
-                    newRow.add(sum);
-                    count++;
-                    if (count % 10485 == 0) {
-                        System.out.println("%" + count / 10485);
-                    }
-                }
-                res.add(newRow);
-            }
-            return res;
-        }
-
-        @Override
-        public void run() {
-            this.mat3 = matMuli(this.mat1, this.mat2);
         }
     }
 
