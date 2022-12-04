@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cffadb6e-62ef-4926-aeb8-dc86a64d7b52" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/src/MatFuncs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Matrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/src/zGemm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/zGemm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670137512072</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="OOD2">
+      <created>1670137870059</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670137870059</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -115,6 +123,7 @@
     <MESSAGE value="add matrix split" />
     <MESSAGE value="add matrixs combination" />
     <MESSAGE value="OOD" />
-    <option name="LAST_COMMIT_MESSAGE" value="OOD" />
+    <MESSAGE value="OOD2" />
+    <option name="LAST_COMMIT_MESSAGE" value="OOD2" />
   </component>
 </project>

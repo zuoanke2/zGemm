@@ -8,6 +8,8 @@ public class Matrix implements Runnable {
     List<List<Long>> mat2;
     List<List<Long>> mat3;
 
+    SplitedMat sm;
+
     int[] pos;
     Matrix(SplitedMat smA, SplitedMat smB) {
         this.mat1 = smA.mat;
@@ -15,16 +17,14 @@ public class Matrix implements Runnable {
         this.pos = smA.pos;
     }
 
-    public SplitedMat doMatCal() {
+    public void doMatCal() {
         this.mat3 = matMuli(mat1, mat2);
-        SplitedMat sm = new SplitedMat(pos[0], pos[1], mat3);
-        return sm;
+        sm = new SplitedMat(pos[0], pos[1], mat3);
     }
 
     public List<List<Long>> matMuli(List<List<Long>> mat1, List<List<Long>> mat2) {
-        System.out.println("Matrix multiple start!");
+        System.out.println("Thread id " + Thread.currentThread().getName() + " Started!");
         List<List<Long>> res = new ArrayList<>();
-        int count = 0;
         for (List<Long> mat1row : mat1) {
             List<Long> newRow = new ArrayList<>();
             for (int k = 0; k < mat2.get(0).size(); k++) {
@@ -33,10 +33,6 @@ public class Matrix implements Runnable {
                     sum += mat1row.get(i) * (mat2.get(j).get(k));
                 }
                 newRow.add(sum);
-                count++;
-                if (count % 10485 == 0) {
-                    System.out.println("%" + count / 10485);
-                }
             }
             res.add(newRow);
         }
@@ -45,6 +41,6 @@ public class Matrix implements Runnable {
 
     @Override
     public void run() {
-        this.mat3 = matMuli(this.mat1, this.mat2);
+        doMatCal();
     }
 }
