@@ -198,12 +198,36 @@ public class zGemm {
         return ans;
     }
 
+    public List<List<Long>> combineMatrix(List<SplitedMat> matList) {
+        List<List<Long>> ans = new ArrayList<>();
+        for (int i = 0; i < 1024; i++) {
+            List<Long> tempRow = new ArrayList<>();
+            for (int j = 0; j < 1024; j++) {
+                tempRow.add(0l);
+            }
+            ans.add(tempRow);
+        }
+
+        for (SplitedMat sm : matList) {
+            int rowStart = sm.pos[1] * 256;
+            int colStart = sm.pos[0] * 256;
+            for (int i = 0; i < sm.mat.size(); i++) {
+                int rowIndex = rowStart;
+                for (int j = 0; j < sm.mat.get(i).size(); j++) {
+                    ans.get(colStart).set(rowIndex++, sm.mat.get(i).get(j));
+                }
+                colStart++;
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         System.out.println("input your selection, 1 is version1, 2 is version2(distributed version): ");
         int select = sc.nextInt();
         if (select == 1) {
-            String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix1.csv";
+            String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/test1.csv";
             String filePath2 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix2.csv";
             zGemm zg = new zGemm();
             //get matrix
@@ -257,7 +281,9 @@ public class zGemm {
             //get matrix
             List<List<Long>> mat1 = zg.readMat(filePath1);
             List<List<Long>> mat2 = zg.readMat(filePath2);
-            zg.splitMatrix(mat1);
+            List<SplitedMat> splitedMats = zg.splitMatrix(mat1);
+            List<List<Long>> oriMat = zg.combineMatrix(splitedMats);
+            System.out.println("finish");
         }
     }
 
