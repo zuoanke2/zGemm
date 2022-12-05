@@ -9,6 +9,8 @@ public class Matrix implements Callable {
     List<List<Long>> mat2;
     List<List<Long>> mat3;
 
+    long errorDetectionTime;
+
     SplitedMat sm;
 
     int[] pos;
@@ -122,24 +124,24 @@ public class Matrix implements Callable {
 
     public List<Integer> detectError(List<Long> colCheckSumShouldBe, List<Long> realColCheckSum, List<Long> rowCheckSumShouldBe, List<Long> realRowCheckSum) {
         List<Integer> ans = new ArrayList<>();
-        int colDiff = 0;
-        int rowDiff = 0;
+        int colDiff;
+        int rowDiff;
         for (int i = 0; i < colCheckSumShouldBe.size(); i++) {
             if (!colCheckSumShouldBe.get(i).equals(realColCheckSum.get(i))) {
                 colDiff = i;
+                ans.add(colDiff);
             }
         }
         for (int i = 0; i < rowCheckSumShouldBe.size(); i++) {
             if (!rowCheckSumShouldBe.get(i).equals(realRowCheckSum.get(i))) {
                 rowDiff = i;
+                ans.add(rowDiff);
             }
         }
-        ans.add(rowDiff);
-        ans.add(colDiff);
         return ans;
     }
 
-    public void errorDetect() {
+    public List<Integer> errorDetect() {
         long dStart = System.currentTimeMillis();
 
         //get the origin check sum list
@@ -158,8 +160,9 @@ public class Matrix implements Callable {
 
         long dEnd = System.currentTimeMillis();
 
-        System.out.println("Error detected, position: Row: " + errorPos.get(0) + " Col: " + errorPos.get(1));
-        System.out.println("Error detection time: " + (dEnd - dStart) + " ms");
+        this.errorDetectionTime = dEnd - dStart;
+
+        return errorPos;
     }
 
     @Override

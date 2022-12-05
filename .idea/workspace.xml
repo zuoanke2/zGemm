@@ -125,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670224890934</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="thread pool">
+      <created>1670226790946</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670226790946</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -148,22 +155,7 @@
     <MESSAGE value="multiple thread computing" />
     <MESSAGE value="multiple thread computing DEBUG" />
     <MESSAGE value="multiple thread error detection" />
-    <option name="LAST_COMMIT_MESSAGE" value="multiple thread error detection" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/src/zGemm.java</url>
-          <line>214</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/src/zGemm.java</url>
-          <line>233</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="thread pool" />
+    <option name="LAST_COMMIT_MESSAGE" value="thread pool" />
   </component>
 </project>
