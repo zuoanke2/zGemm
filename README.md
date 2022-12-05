@@ -1,9 +1,9 @@
 # zGemm
 ## 1 Environment Prepare
-OS: MacOS 12.6
-IDE: IntelliJ IDEA CE
-JDK: 1.8
-Dependency Management: Maven
+OS: MacOS 12.6  
+IDE: IntelliJ IDEA CE  
+JDK: 1.8  
+Dependency Management: Maven  
 I highly recommend you to use the same IDE(IntelliJ IDEA CE) with me, it is FREE and it has already integrated JDK and Maven.  
 ## 2 Setup
 1, Get my code from github or Cavans.  
