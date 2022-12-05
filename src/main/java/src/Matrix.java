@@ -2,8 +2,9 @@ package src;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
-public class Matrix implements Runnable {
+public class Matrix implements Callable {
     List<List<Long>> mat1;
     List<List<Long>> mat2;
     List<List<Long>> mat3;
@@ -162,7 +163,7 @@ public class Matrix implements Runnable {
     }
 
     @Override
-    public void run() {
-        doMatCal();
+    public SplitedMat call() {
+        return doMatCal();
     }
 }
