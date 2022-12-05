@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cffadb6e-62ef-4926-aeb8-dc86a64d7b52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/src/MatFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/MatFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/src/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Matrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/src/zGemm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/zGemm.java" afterDir="false" />
     </list>
@@ -112,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670139457970</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="multiple thread computing DEBUG">
+      <created>1670212078020</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670212078025</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -133,15 +139,16 @@
     <MESSAGE value="OOD" />
     <MESSAGE value="OOD2" />
     <MESSAGE value="multiple thread computing" />
-    <option name="LAST_COMMIT_MESSAGE" value="multiple thread computing" />
+    <MESSAGE value="multiple thread computing DEBUG" />
+    <option name="LAST_COMMIT_MESSAGE" value="multiple thread computing DEBUG" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/src/zGemm.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="8" />
+          <line>198</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

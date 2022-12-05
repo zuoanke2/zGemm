@@ -59,6 +59,7 @@ public class zGemm {
             //get the origin check sum list
             List<Long> originColCheckSumList = mf.getColCheckSum(mat1);
             List<Long> originRowCheckSumList = mf.getRowCheckSum(mat2);
+
             //cal the correct check sum list
             List<Long> colCheckSumShouldBe = mf.calColCheckSum(originColCheckSumList, mat2);
             List<Long> rowCheckSumShouldBe = mf.calRowCheckSum(mat1, originRowCheckSumList);
@@ -195,6 +196,8 @@ public class zGemm {
             System.out.println("");
             System.out.println("Generating result...");
             System.out.println("");
+            mf.putAnError(mx1.sm.mat);
+            mx1.errorDetect();
             matListC.add(mx1.sm);
             matListC.add(mx2.sm);
             matListC.add(mx3.sm);
@@ -235,22 +238,28 @@ public class zGemm {
                 e1.printStackTrace();
             }
         } else if (select == 3) {
-            String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix1.csv";
-            String filePath2 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix2.csv";
+            String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/test1.csv";
+            String filePath2 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/test2.csv";
             MatFuncs mf = new MatFuncs();
             //get matrix
             List<List<Long>> mat1 = mf.readMat(filePath1);
             List<List<Long>> mat2 = mf.readMat(filePath2);
-            List<SplitedMat> splitedMatsRow = mf.splitMatrixByRow(mat1);
-            List<SplitedMat> splitedMatsCol = mf.splitMatrixByCol(mat2);
-            List<SplitedMat> resultMatList = new ArrayList<>();
-            for (SplitedMat smRow : splitedMatsRow) {
-                for (SplitedMat smCol : splitedMatsCol) {
-                    Matrix mx = new Matrix(smRow, smCol);
-                    resultMatList.add(mx.doMatCal());
-                }
-            }
-            List<List<Long>> result = mf.combineMatrix(resultMatList);
+//            List<SplitedMat> splitedMatsRow = mf.splitMatrixByRow(mat1);
+//            List<SplitedMat> splitedMatsCol = mf.splitMatrixByCol(mat2);
+//            List<SplitedMat> resultMatList = new ArrayList<>();
+//            for (SplitedMat smRow : splitedMatsRow) {
+//                for (SplitedMat smCol : splitedMatsCol) {
+//                    Matrix mx = new Matrix(smRow, smCol);
+//                    resultMatList.add(mx.doMatCal());
+//                }
+//            }
+//            List<List<Long>> result = mf.combineMatrix(resultMatList);
+            SplitedMat sm1 = new SplitedMat(0, 0, mat1);
+            SplitedMat sm2 = new SplitedMat(0, 0, mat2);
+            Matrix mx = new Matrix(sm1, sm2);
+            mx.doMatCal();
+            mf.putAnError(mx.sm.mat);
+            mx.errorDetect();
             System.out.println("finish");
         }
     }

@@ -35,6 +35,7 @@ public class Matrix implements Runnable {
         return sm;
     }
 
+
     public List<List<Long>> matMuli(List<List<Long>> mat1, List<List<Long>> mat2) {
         System.out.println("Thread id " + Thread.currentThread().getName() + " Started!");
         List<List<Long>> res = new ArrayList<>();
@@ -45,17 +46,7 @@ public class Matrix implements Runnable {
             }
             res.add(row);
         }
-//        for (List<Long> mat1row : mat1) {
-//            List<Long> newRow = new ArrayList<>();
-//            for (int k = 0; k < mat2.get(0).size(); k++) {
-//                long sum = 0;
-//                for (int i = 0, j = 0; i < mat1row.size() && j < mat2.size(); i++, j++) {
-//                    sum += mat1row.get(i) * (mat2.get(j).get(k));
-//                }
-//                newRow.add(sum);
-//            }
-//            res.add(newRow);
-//        }
+
         for (int i = 0; i < mat1.size(); i++) {
             for (int j = 0; j < mat2.size(); j++) {
                 long sum = 0;
@@ -66,6 +57,108 @@ public class Matrix implements Runnable {
             }
         }
         return res;
+    }
+
+    List<Long> calColCheckSum(List<Long> colCheckSum, List<List<Long>> mat) {
+        List<Long> ans = new ArrayList<>();
+        for (int i = 0; i < mat.size(); i++) {
+            long sum = 0;
+            for (int j = 0, k = 0; j < mat.get(0).size() && k < colCheckSum.size(); j++, k++) {
+                sum += mat.get(i).get(j) * colCheckSum.get(k);
+            }
+            ans.add(sum);
+        }
+        return ans;
+    }
+
+    List<Long> calRowCheckSum(List<List<Long>> mat, List<Long> rowCheckSum) {
+        List<Long> ans = new ArrayList<>();
+        for (List<Long> row : mat) {
+            long sum = 0;
+            for (int i = 0; i < row.size(); i++) {
+                sum += row.get(i) * rowCheckSum.get(i);
+            }
+            ans.add(sum);
+        }
+        return ans;
+    }
+
+    List<Long> getCheckSumMN(List<List<Long>> mat) {
+        List<Long> ans = new ArrayList<>();
+        for (int i = 0; i < mat.get(0).size(); i++) {
+            long checkSum = 0;
+            for (int j = 0; j < mat.size(); j++) {
+                checkSum += mat.get(j).get(i);
+            }
+            ans.add(checkSum);
+        }
+        return ans;
+    }
+
+    List<Long> getColCheckSum(List<List<Long>> mat) {
+        List<Long> ans = new ArrayList<>();
+        for (int i = 0; i < mat.get(0).size(); i++) {
+            long checkSum = 0;
+            for (int j = 0; j < mat.size(); j++) {
+                checkSum += mat.get(j).get(i);
+            }
+            ans.add(checkSum);
+        }
+        return ans;
+    }
+
+    List<Long> getRowCheckSum(List<List<Long>> mat) {
+        List<Long> ans = new ArrayList<>();
+        for (List<Long> row : mat) {
+            long rowCheckSum = 0;
+            for (long num : row) {
+                rowCheckSum += num;
+            }
+            ans.add(rowCheckSum);
+        }
+        return ans;
+    }
+
+    public List<Integer> detectError(List<Long> colCheckSumShouldBe, List<Long> realColCheckSum, List<Long> rowCheckSumShouldBe, List<Long> realRowCheckSum) {
+        List<Integer> ans = new ArrayList<>();
+        int colDiff = 0;
+        int rowDiff = 0;
+        for (int i = 0; i < colCheckSumShouldBe.size(); i++) {
+            if (!colCheckSumShouldBe.get(i).equals(realColCheckSum.get(i))) {
+                colDiff = i;
+            }
+        }
+        for (int i = 0; i < rowCheckSumShouldBe.size(); i++) {
+            if (!rowCheckSumShouldBe.get(i).equals(realRowCheckSum.get(i))) {
+                rowDiff = i;
+            }
+        }
+        ans.add(rowDiff);
+        ans.add(colDiff);
+        return ans;
+    }
+
+    public void errorDetect() {
+        long dStart = System.currentTimeMillis();
+
+        //get the origin check sum list
+        List<Long> originColCheckSumList = getCheckSumMN(mat1);
+        List<Long> originRowCheckSumList = getCheckSumMN(mat2);
+
+        //cal the correct check sum list
+        List<Long> colCheckSumShouldBe = calColCheckSum(originColCheckSumList, mat2);
+        List<Long> rowCheckSumShouldBe = calRowCheckSum(mat1, originRowCheckSumList);
+
+        //get the new check sum list
+        List<Long> newColCheckSum = getColCheckSum(mat3);
+        List<Long> newRowCheckSum = getRowCheckSum(mat3);
+
+        List<Integer> errorPos = detectError(colCheckSumShouldBe, newColCheckSum, rowCheckSumShouldBe, newRowCheckSum);
+
+        long dEnd = System.currentTimeMillis();
+
+        System.out.println("Error detected, position: Row: " + errorPos.get(0) + " Col: " + errorPos.get(1));
+        System.out.println("Error detection time: " + (dEnd - dStart) + " ms");
     }
 
     @Override
