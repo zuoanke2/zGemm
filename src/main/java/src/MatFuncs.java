@@ -166,6 +166,42 @@ public class MatFuncs {
         return ans;
     }
 
+    public List<SplitedMat> splitMatrixByRow(List<List<Long>> matrix) {
+        List<SplitedMat> ans = new ArrayList<>();
+        int cutStep = matrix.size() / 4;
+        int countRow = 0;
+        for (int i = 0; i < 4; i++) {
+            List<List<Long>> tempMat = new ArrayList<>();
+            for (int j = countRow * cutStep; j < countRow * cutStep + cutStep; j++) {
+                tempMat.add(matrix.get(j));
+            }
+            SplitedMat sm = new SplitedMat(countRow, -1, tempMat);
+            ans.add(sm);
+            countRow++;
+        }
+        return ans;
+    }
+
+    public List<SplitedMat> splitMatrixByCol(List<List<Long>> matrix) {
+        List<SplitedMat> ans = new ArrayList<>();
+        int cutStep = matrix.get(0).size() / 4;
+        int countCol = 0;
+        for (int k = 0; k < 4; k++) {
+            List<List<Long>> tempMat = new ArrayList<>();
+            for (int i = countCol * cutStep; i < countCol * cutStep + cutStep; i++) {
+                List<Long> tempRow = new ArrayList<>();
+                for (int j = 0; j < matrix.size(); j++) {
+                    tempRow.add(matrix.get(j).get(i));
+                }
+                tempMat.add(tempRow);
+            }
+            SplitedMat sm = new SplitedMat(-1, countCol, tempMat);
+            ans.add(sm);
+            countCol++;
+        }
+        return ans;
+    }
+
     public List<List<Long>> combineMatrix(List<SplitedMat> matList) {
         List<List<Long>> ans = new ArrayList<>();
         for (int i = 0; i < 1024; i++) {

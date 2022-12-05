@@ -2,9 +2,7 @@ package src;
 
 import cn.hutool.core.util.StrUtil;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class zGemm {
@@ -37,7 +35,7 @@ public class zGemm {
         System.out.println("input your selection, 1 is version1, 2 is version2(distributed version): ");
         int select = sc.nextInt();
         if (select == 1) {
-            String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/test1.csv";
+            String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix1.csv";
             String filePath2 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix2.csv";
             MatFuncs mf = new MatFuncs();
             //get matrix
@@ -76,6 +74,25 @@ public class zGemm {
             System.out.println("Error detected, position: Row: " + errorPos.get(0) + " Col: " + errorPos.get(1));
             System.out.println("Matrix multiple time: " + (cEnd - cStart) + " ms");
             System.out.println("Error detection time: " + (dEnd - dStart) + " ms");
+
+            String filename = "output.csv";
+            File file=new File(filename);
+            try {
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw=new BufferedWriter(fw);
+                for(int i = 0; i < 1024; i++){
+                    for(int j = 0; j < 1024; j++){
+                        bw.write(String.valueOf(newMat.get(i).get(j)));
+                        bw.write(",");
+                    }
+                    bw.newLine();
+                }
+                bw.close();
+                fw.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
         } else if (select == 2) {
             String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix1.csv";
             String filePath2 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix2.csv";
@@ -84,8 +101,8 @@ public class zGemm {
             List<List<Long>> mat1data = mf.readMat(filePath1);
             List<List<Long>> mat2data = mf.readMat(filePath2);
             //split matrix A and B
-            List<SplitedMat> matListA = mf.splitMatrix(mat1data);
-            List<SplitedMat> matListB = mf.splitMatrix(mat2data);
+            List<SplitedMat> matListA = mf.splitMatrixByRow(mat1data);
+            List<SplitedMat> matListB = mf.splitMatrixByCol(mat2data);
 
             List<SplitedMat> matListC = new ArrayList<>();
 
@@ -93,63 +110,63 @@ public class zGemm {
             Thread t1 = new Thread(mx1);
             t1.start();
 
-            Matrix mx2 = new Matrix(matListA.get(1), matListB.get(1));
+            Matrix mx2 = new Matrix(matListA.get(0), matListB.get(1));
             Thread t2 = new Thread(mx2);
             t2.start();
 
-            Matrix mx3 = new Matrix(matListA.get(2), matListB.get(2));
+            Matrix mx3 = new Matrix(matListA.get(0), matListB.get(2));
             Thread t3 = new Thread(mx3);
             t3.start();
 
-            Matrix mx4 = new Matrix(matListA.get(3), matListB.get(3));
+            Matrix mx4 = new Matrix(matListA.get(0), matListB.get(3));
             Thread t4 = new Thread(mx4);
             t4.start();
 
-            Matrix mx5 = new Matrix(matListA.get(4), matListB.get(4));
+            Matrix mx5 = new Matrix(matListA.get(1), matListB.get(0));
             Thread t5 = new Thread(mx5);
             t5.start();
 
-            Matrix mx6 = new Matrix(matListA.get(5), matListB.get(5));
+            Matrix mx6 = new Matrix(matListA.get(1), matListB.get(1));
             Thread t6 = new Thread(mx6);
             t6.start();
 
-            Matrix mx7 = new Matrix(matListA.get(6), matListB.get(6));
+            Matrix mx7 = new Matrix(matListA.get(1), matListB.get(2));
             Thread t7 = new Thread(mx7);
             t7.start();
 
-            Matrix mx8 = new Matrix(matListA.get(7), matListB.get(7));
+            Matrix mx8 = new Matrix(matListA.get(1), matListB.get(3));
             Thread t8 = new Thread(mx8);
             t8.start();
 
-            Matrix mx9 = new Matrix(matListA.get(8), matListB.get(8));
+            Matrix mx9 = new Matrix(matListA.get(2), matListB.get(0));
             Thread t9 = new Thread(mx9);
             t9.start();
 
-            Matrix mx10 = new Matrix(matListA.get(9), matListB.get(9));
+            Matrix mx10 = new Matrix(matListA.get(2), matListB.get(1));
             Thread t10 = new Thread(mx10);
             t10.start();
 
-            Matrix mx11 = new Matrix(matListA.get(10), matListB.get(10));
+            Matrix mx11 = new Matrix(matListA.get(2), matListB.get(2));
             Thread t11 = new Thread(mx11);
             t11.start();
 
-            Matrix mx12 = new Matrix(matListA.get(11), matListB.get(11));
+            Matrix mx12 = new Matrix(matListA.get(2), matListB.get(3));
             Thread t12 = new Thread(mx12);
             t12.start();
 
-            Matrix mx13 = new Matrix(matListA.get(12), matListB.get(12));
+            Matrix mx13 = new Matrix(matListA.get(3), matListB.get(0));
             Thread t13 = new Thread(mx13);
             t13.start();
 
-            Matrix mx14 = new Matrix(matListA.get(13), matListB.get(13));
+            Matrix mx14 = new Matrix(matListA.get(3), matListB.get(1));
             Thread t14 = new Thread(mx14);
             t14.start();
 
-            Matrix mx15 = new Matrix(matListA.get(14), matListB.get(14));
+            Matrix mx15 = new Matrix(matListA.get(3), matListB.get(2));
             Thread t15 = new Thread(mx15);
             t15.start();
 
-            Matrix mx16 = new Matrix(matListA.get(15), matListB.get(15));
+            Matrix mx16 = new Matrix(matListA.get(3), matListB.get(3));
             Thread t16 = new Thread(mx16);
             t16.start();
 
@@ -200,7 +217,23 @@ public class zGemm {
 
             System.out.println("All work Done");
 
-
+            String filename = "output_distributed.csv";
+            File file=new File(filename);
+            try {
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw=new BufferedWriter(fw);
+                for(int i = 0; i < 1024; i++){
+                    for(int j = 0; j < 1024; j++){
+                        bw.write(String.valueOf(mat3.get(i).get(j)));
+                        bw.write(",");
+                    }
+                    bw.newLine();
+                }
+                bw.close();
+                fw.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         } else if (select == 3) {
             String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix1.csv";
             String filePath2 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix2.csv";
@@ -208,8 +241,16 @@ public class zGemm {
             //get matrix
             List<List<Long>> mat1 = mf.readMat(filePath1);
             List<List<Long>> mat2 = mf.readMat(filePath2);
-            List<SplitedMat> splitedMats = mf.splitMatrix(mat1);
-            List<List<Long>> oriMat = mf.combineMatrix(splitedMats);
+            List<SplitedMat> splitedMatsRow = mf.splitMatrixByRow(mat1);
+            List<SplitedMat> splitedMatsCol = mf.splitMatrixByCol(mat2);
+            List<SplitedMat> resultMatList = new ArrayList<>();
+            for (SplitedMat smRow : splitedMatsRow) {
+                for (SplitedMat smCol : splitedMatsCol) {
+                    Matrix mx = new Matrix(smRow, smCol);
+                    resultMatList.add(mx.doMatCal());
+                }
+            }
+            List<List<Long>> result = mf.combineMatrix(resultMatList);
             System.out.println("finish");
         }
     }
