@@ -20,4 +20,4 @@ I highly recommend you to use the same IDE(IntelliJ IDEA CE) with me, it is FREE
 2, Just follow the instructions:  
 <img width="1315" alt="image" src="https://user-images.githubusercontent.com/117051280/205597292-9994c427-c962-4b44-8d1b-00c2bbef8fce.png">  
 ## 4 Check the results
-the version1 and version2 will respectively outputs a csv file "output" and "output_disributed", they are the results of matrix multipling.
+the version1 and version2 will respectively outputs a csv file "output" and "output_disributed" to your project folder, they are the results of matrix multipling.  
