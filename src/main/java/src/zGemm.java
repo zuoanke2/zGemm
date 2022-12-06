@@ -135,7 +135,7 @@ public class zGemm {
             long TotalErrorDetectTime = 0;
             for (Matrix task : taskList) {
                 List<Integer> errorPos = task.errorDetect();
-                System.out.println("Block No." + (count + 1) + "error detecting...");
+                System.out.println("Block No." + (count + 1) + " error detecting...");
                 if (errorPos.size() == 0) {
                     System.out.println("Block No." + (count + 1) + " has no error!");
                     System.out.println("Error detection time: " + task.errorDetectionTime + " ms");
@@ -177,8 +177,8 @@ public class zGemm {
             TotalErrorDetectTime += reDetEnd - reDetStart;
 
             System.out.println("");
-            System.out.println("Whole result Error detected, position: Row: " + errorPos.get(0) + " Col: " + errorPos.get(1));
-            System.out.println("Whole result Error detection time:" + (reDetEnd - reDetStart) + " ms");
+            System.out.println("Final result matrix Error detected, position: Row: " + errorPos.get(0) + " Col: " + errorPos.get(1));
+            System.out.println("Final result matrix Error detection time: " + (reDetEnd - reDetStart) + " ms");
             System.out.println("");
 
             long end = System.currentTimeMillis();

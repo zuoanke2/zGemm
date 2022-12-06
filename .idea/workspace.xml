@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cffadb6e-62ef-4926-aeb8-dc86a64d7b52" name="Changes" comment="" />
+    <list default="true" id="cffadb6e-62ef-4926-aeb8-dc86a64d7b52" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/zGemm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/zGemm.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670229853335</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="release 1.1">
+      <created>1670230010972</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670230010972</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -160,6 +170,7 @@
     <MESSAGE value="multiple thread error detection" />
     <MESSAGE value="thread pool" />
     <MESSAGE value="release1" />
-    <option name="LAST_COMMIT_MESSAGE" value="release1" />
+    <MESSAGE value="release 1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="release 1.1" />
   </component>
 </project>
