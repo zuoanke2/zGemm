@@ -13,8 +13,8 @@ public class zGemm {
         System.out.println("input your selection the next line, 1 is version1, 2 is version2(distributed version), 3 is for developer testing, don't input 3:");
         int select = sc.nextInt();
         if (select == 1) {
-            String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix1.csv";
-            String filePath2 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix2.csv";
+            String filePath1 = "/Users/xcaonimax/Desktop/javaProjects/zGemm/matrix1.csv";
+            String filePath2 = "/Users/xcaonimax/Desktop/javaProjects/zGemm/matrix2.csv";
             MatFuncs mf = new MatFuncs();
             //get matrix
             List<List<Long>> mat1 = mf.readMat(filePath1);
