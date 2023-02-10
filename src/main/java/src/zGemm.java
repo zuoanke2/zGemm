@@ -79,8 +79,8 @@ public class zGemm {
             }
 
         } else if (select == 2) {
-            String filePath1 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix1.csv";
-            String filePath2 = "/Users/zuoankembp/Desktop/CSE8377/zGemm/matrix2.csv";
+            String filePath1 = "/Users/xcaonimax/Desktop/javaProjects/zGemm/matrix1.csv";
+            String filePath2 = "/Users/xcaonimax/Desktop/javaProjects/zGemm/matrix1.csv";
             MatFuncs mf = new MatFuncs();
             //get matrix
             List<List<Long>> mat1data = mf.readMat(filePath1);

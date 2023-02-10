@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cffadb6e-62ef-4926-aeb8-dc86a64d7b52" name="Changes" comment="add the matrix files" />
+    <list default="true" id="cffadb6e-62ef-4926-aeb8-dc86a64d7b52" name="Changes" comment="matrix files address update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/zGemm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/zGemm.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669969665857</updated>
-      <workItem from="1676019414347" duration="301000" />
+      <workItem from="1676019414347" duration="1606000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1670056034686</created>
@@ -150,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676019678537</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="matrix files address update">
+      <created>1676019816863</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1676019816863</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +190,7 @@
     <MESSAGE value="release1" />
     <MESSAGE value="release 1.1" />
     <MESSAGE value="add the matrix files" />
-    <option name="LAST_COMMIT_MESSAGE" value="add the matrix files" />
+    <MESSAGE value="matrix files address update" />
+    <option name="LAST_COMMIT_MESSAGE" value="matrix files address update" />
   </component>
 </project>
